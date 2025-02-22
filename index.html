@@ -1,0 +1,228 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #36D1DC, #5B86E5);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+        input {
+            padding: 12px;
+            margin: 10px;
+            width: 250px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 20px;
+            background: #ff7eb3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background: #ff3d87;
+            transform: scale(1.05);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: slideUp 0.5s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>🌤 Weather App</h2>
+        <input type="text" id="location" placeholder="Enter location">
+        <button onclick="getWeather()">Get Weather</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        async function getWeather() {
+            const location = document.getElementById('location').value;
+            if (!location) {
+                alert('Please enter a location');
+                return;
+            }
+            
+            const apiKey = 'b1e91766d6844b5d87582433252202';
+            const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const resultElement = document.getElementById('result');
+                resultElement.innerText = `
+                    Location: ${data.location.name}, ${data.location.region}, ${data.location.country}\n
+                    Temperature: ${data.current.temp_c}°C\n
+                    Condition: ${data.current.condition.text}\n
+                    Humidity: ${data.current.humidity}%\n
+                    Wind Speed: ${data.current.wind_kph} km/h`;
+                resultElement.style.opacity = "0";
+                resultElement.style.animation = "none";
+                setTimeout(() => {
+                    resultElement.style.animation = "slideUp 0.5s ease-in-out forwards";
+                }, 100);
+            } catch (error) {
+                document.getElementById('result').innerText = 'Error fetching weather data';
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #36D1DC, #5B86E5);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+        }
+        input {
+            padding: 12px;
+            margin: 10px;
+            width: 250px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 20px;
+            background: #ff7eb3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background: #ff3d87;
+            transform: scale(1.05);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: slideUp 0.5s ease-in-out forwards;
+        }
+        .credit {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>🌤 Weather App</h2>
+        <input type="text" id="location" placeholder="Enter location">
+        <button onclick="getWeather()">Get Weather</button>
+        <p id="result"></p>
+    </div>
+    <p class="credit">Created by @_unknownx69</p>
+    <script>
+        async function getWeather() {
+            const location = document.getElementById('location').value;
+            if (!location) {
+                alert('Please enter a location');
+                return;
+            }
+            
+            const apiKey = 'b1e91766d6844b5d87582433252202';
+            const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const resultElement = document.getElementById('result');
+                resultElement.innerText = `
+                    Location: ${data.location.name}, ${data.location.region}, ${data.location.country}\n
+                    Temperature: ${data.current.temp_c}°C\n
+                    Condition: ${data.current.condition.text}\n
+                    Humidity: ${data.current.humidity}%\n
+                    Wind Speed: ${data.current.wind_kph} km/h`;
+                resultElement.style.opacity = "0";
+                resultElement.style.animation = "none";
+                setTimeout(() => {
+                    resultElement.style.animation = "slideUp 0.5s ease-in-out forwards";
+                }, 100);
+            } catch (error) {
+                document.getElementById('result').innerText = 'Error fetching weather data';
+            }
+        }
+    </script>
+</body>
+</html>
