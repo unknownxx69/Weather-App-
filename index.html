@@ -202,7 +202,10 @@
             }
             
             const apiKey = 'b1e91766d6844b5d87582433252202';
-            const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+            const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`;
+      
+            
+
             
             try {
                 const response = await fetch(url);
